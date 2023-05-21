@@ -10,13 +10,13 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
  
  ### How to create a record:
  
-''dart
+'''
    (String, {DateTime modified}) get metadata {
       const title = 'My Document'; 
       final now = DateTime.now();
       return (title, modified: now);
     }
- ''
+ '''
     
  Record fields can contain both named and positonal fields
  
