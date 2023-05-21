@@ -27,8 +27,8 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
   metadataRecord.$1
   metadataRecord.modified
  ```
-   
-   Use getter $<num> on positional fields
+ 
+   Use getter `$<num>` on positional fields
    Use the name directly for named fields
    
    ? `$<num>` starts at $1 and skips named fields
@@ -126,12 +126,14 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
   The case body only executes if the case pattern matches the data in _json
   
   This checks
+  >
     - _json is a Map type.
     - _json contains a metadata key.
     - _json is not null.
     - _json['metadata'] is also a Map type.
     - _json['metadata'] contains the keys title and modified.
     - title and localModified are strings and aren't null.
+  <
    
    If the value doesn't match, the pattern refuses to continue execution and proceeds to the else clause.
   
