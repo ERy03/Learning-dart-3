@@ -8,15 +8,13 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
  > Why use records? 
  You can define a class to return different types of data in a type-safe way but that can be more verbose in some cases
  
- > How to create a record: 
- ''' dart
+ > How to create a record:
+
    (String, {DateTime modified}) get metadata {
       const title = 'My Document'; 
       final now = DateTime.now();
-    
       return (title, modified: now);
     }
- '''
     
     Record fields can contain both named and positonal fields
  
