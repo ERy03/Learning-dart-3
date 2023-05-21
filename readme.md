@@ -133,7 +133,6 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
     - _json['metadata'] is also a Map type.
     - _json['metadata'] contains the keys title and modified.
     - title and localModified are strings and aren't null.
-  <
    
    If the value doesn't match, the pattern refuses to continue execution and proceeds to the else clause.
   
