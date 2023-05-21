@@ -164,7 +164,8 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
   Unlike switch statements, switch expressions return a value and can be used anywhere an expression can be used
   
 ### Guard clauses
-  
+
+>
  A guard clause uses the when keyword after a case pattern.
  They can be used in if-cases, switch statements, and switch expressions.
  They only add a condition to a pattern after it's matched.
