@@ -9,12 +9,14 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
  You can define a class to return different types of data in a type-safe way but that can be more verbose in some cases
  
  ### How to create a record:
-
+ 
+''' dart
    (String, {DateTime modified}) get metadata {
       const title = 'My Document'; 
       final now = DateTime.now();
       return (title, modified: now);
     }
+ '''
     
  Record fields can contain both named and positonal fields
  
@@ -61,7 +63,7 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
   - Irrefutable:
     Values must match the pattern. If not, it will be considered an error and destructuring will not occur
   
- > Usesace of Refutable patterns
+ ### Usesace of Refutable patterns
  Reading JSON values without patterns: 
  
   class Document {
@@ -116,10 +118,10 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
    
    If the value doesn't match, the pattern refuses to continue execution and proceeds to the else clause.
   
- > Switch statements
+ ### Switch statements
  As of Dart 3, switch statements do not require break 
  
- > Switch expressions
+ ### Switch expressions
  Instead of this 
     switch (block.type) {
       case 'h1':
@@ -139,18 +141,18 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
   You can provide values directly to a variable.
   Unlike switch statements, switch expressions return a value and can be used anywhere an expression can be used
   
-  > Guard clauses
+  ### Guard clauses
     A guard clause uses the when keyword after a case pattern.
     They can be used in if-cases, switch statements, and switch expressions.
     They only add a condition to a pattern after it's matched.
     If the guard clause evaluates to false, the entire pattern is refuted, and execution proceeds to the next case.
     
-  > Exhaustive Switching
+  ### Exhaustive Switching
     When every case in a switch is handled it's called an exhaustive switch
     
     Dart 3 extended exhaustiveness checking to objects and class hierarchies with the new class modifier sealed
     
-  > Sealed 
+  ### Sealed 
   Instead of this 
     class Block {
       final String type;
@@ -199,6 +201,6 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
   
   The sealed keyword is a class modifier that means you can only extend or implement this class in the same library.
   
-  > More info
+  ### More info
   https://medium.com/dartlang/announcing-dart-3-53f065a10635
  
