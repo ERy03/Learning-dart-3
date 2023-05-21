@@ -11,11 +11,11 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
  ### How to create a record:
  
 ``` dart
-   (String, {DateTime modified}) get metadata {
-      const title = 'My Document'; 
-      final now = DateTime.now();
-      return (title, modified: now);
-    }
+(String, {DateTime modified}) get metadata {
+   const title = 'My Document'; 
+   final now = DateTime.now();
+   return (title, modified: now);
+ }
  ```
     
  Record fields can contain both named and positonal fields
@@ -23,10 +23,10 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
  ### How to access record fields
  
  ``` dart
-    final metadataRecord = document.metadata;
-    metadataRecord.$1
-    metadataRecord.modified
-   ```
+ final metadataRecord = document.metadata;
+  metadataRecord.$1
+  metadataRecord.modified
+ ```
    
    Use getter $<num> on positional fields
    Use the name directly for named fields
@@ -35,9 +35,9 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
    ex. 
  
  ``` dart
-    var record = (named: 'a', 'b', named2: 'c', 'd');
-    print(record.$1); // prints b
-    print(record.$2); // prints d
+ var record = (named: 'a', 'b', named2: 'c', 'd');
+ print(record.$1); // prints b
+ print(record.$2); // prints d
  ```
  
  ### What are patterns?
@@ -46,24 +46,24 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
  
   Instead of this
  ``` dart
-    final metadataRecord = document.metadata;
+ final metadataRecord = document.metadata;
  ``` 
   do this
  ``` dart
-    final (title, modified: modified) = document.metadata;
+ final (title, modified: modified) = document.metadata;
  ``` 
  
  ### Using patterns
  ``` dart
-  final (title, modified: localVariableName) = document.metadata;
+ final (title, modified: localVariableName) = document.metadata;
   
-    Text(title)
-    'Last modified $localVariableName'
+  Text(title)
+  'Last modified $localVariableName'
  ``` 
    
   If the name of the field and the variable populating it are the same, you can used a shorthand
  ``` dart
-    :modified // same as modified: modified
+ :modified // same as modified: modified
  ``` 
     
  ### Types of patterns
@@ -80,47 +80,47 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
  Reading JSON values without patterns: 
  
  ``` dart
-  class Document {
-    final Map<String, Object?> _json;
-    Document() : _json = jsonDecode(documentJson);
+ class Document {
+   final Map<String, Object?> _json;
+   Document() : _json = jsonDecode(documentJson);
 
-    (String, {DateTime modified}) get metadata {
-      if (_json.containsKey('metadata')) {                     
-        final metadataJson = _json['metadata'];
-        if (metadataJson is Map) {
-          final title = metadataJson['title'] as String;
-          final localModified =
-              DateTime.parse(metadataJson['modified'] as String);
-          return (title, modified: localModified);
-        }
-      }
-      throw const FormatException('Unexpected JSON');          
-    }
-  }
+   (String, {DateTime modified}) get metadata {
+     if (_json.containsKey('metadata')) {                     
+       final metadataJson = _json['metadata'];
+       if (metadataJson is Map) {
+         final title = metadataJson['title'] as String;
+         final localModified =
+             DateTime.parse(metadataJson['modified'] as String);
+         return (title, modified: localModified);
+       }
+     }
+     throw const FormatException('Unexpected JSON');          
+   }
+ }
  ``` 
   
   With patterns:
   
  ``` dart
-    class Document {
-    final Map<String, Object?> _json;
-    Document() : _json = jsonDecode(documentJson);
+ class Document {
+  final Map<String, Object?> _json;
+  Document() : _json = jsonDecode(documentJson);
 
-    (String, {DateTime modified}) get metadata {
-      if (_json                                                
-          case {
-            'metadata': {
-              'title': String title,
-              'modified': String localModified,
-            }
-          }) {
-        return (title, modified: DateTime.parse(localModified));
-      } else {
-        throw const FormatException('Unexpected JSON');
-      }                                                        
-    }
-  }
-  ``` 
+  (String, {DateTime modified}) get metadata {
+   if (_json                                                
+       case {
+         'metadata': {
+           'title': String title,
+           'modified': String localModified,
+         }
+       }) {
+     return (title, modified: DateTime.parse(localModified));
+   } else {
+     throw const FormatException('Unexpected JSON');
+   }                                                        
+ }
+} 
+``` 
  
   This is the new if-case introduced in Dart3.
   The case body only executes if the case pattern matches the data in _json
@@ -140,20 +140,24 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
  
  ### Switch expressions
  Instead of this 
-    switch (block.type) {
-      case 'h1':
-        textStyle = Theme.of(context).textTheme.displayMedium;
-      case 'p' || 'checkbox':
-        textStyle = Theme.of(context).textTheme.bodyMedium;
-      case _:
-        textStyle = Theme.of(context).textTheme.bodySmall;
-    }
+ ``` dart
+ switch (block.type) {
+   case 'h1':
+     textStyle = Theme.of(context).textTheme.displayMedium;
+   case 'p' || 'checkbox':
+     textStyle = Theme.of(context).textTheme.bodyMedium;
+   case _:
+     textStyle = Theme.of(context).textTheme.bodySmall;
+ }
+ ```
  do this 
-    textStyle = switch (block.type) {
-      'h1' => Theme.of(context).textTheme.displayMedium,
-      'p' || 'checkbox' => Theme.of(context).textTheme.bodyMedium,
-      _ => Theme.of(context).textTheme.bodySmall
-    }; 
+ ``` dart
+ textStyle = switch (block.type) {
+   'h1' => Theme.of(context).textTheme.displayMedium,
+   'p' || 'checkbox' => Theme.of(context).textTheme.bodyMedium,
+   _ => Theme.of(context).textTheme.bodySmall
+ }; 
+``` 
 
   You can provide values directly to a variable.
   Unlike switch statements, switch expressions return a value and can be used anywhere an expression can be used
@@ -171,50 +175,54 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
     
   ### Sealed 
   Instead of this 
-    class Block {
-      final String type;
-      final String text;
-      Block(this.type, this.text);
+ ``` dart
+ class Block {
+   final String type;
+   final String text;
+   Block(this.type, this.text);
 
-      factory Block.fromJson(Map<String, dynamic> json) {
-        //Map patterns ignore any entries in the map object that aren't explicitly accounted for in the pattern.
-        if (json case {'type': final type, 'text': final text}) {
-          return Block(type, text);
-        } else {
-          throw const FormatException('Unexpected JSON format');
-        }
-      }
-    }
+   factory Block.fromJson(Map<String, dynamic> json) {
+     //Map patterns ignore any entries in the map object that aren't explicitly accounted for in the pattern.
+     if (json case {'type': final type, 'text': final text}) {
+       return Block(type, text);
+     } else {
+       throw const FormatException('Unexpected JSON format');
+     }
+   }
+ }
+ ``` 
   do this 
-  sealed class Block {
-    Block();
+ ``` dart
+ sealed class Block {
+   Block();
 
-    factory Block.fromJson(Map<String, Object?> json) {
-      return switch (json) {
-        {'type': 'h1', 'text': String text} => HeaderBlock(text),
-        {'type': 'p', 'text': String text} => ParagraphBlock(text),
-        {'type': 'checkbox', 'text': String text, 'checked': bool checked} =>
-          CheckboxBlock(text, checked),
-        _ => throw const FormatException('Unexpected JSON format'),
-      };
-    }
-  }
+   factory Block.fromJson(Map<String, Object?> json) {
+     return switch (json) {
+       {'type': 'h1', 'text': String text} => HeaderBlock(text),
+       {'type': 'p', 'text': String text} => ParagraphBlock(text),
+       {'type': 'checkbox', 'text': String text, 'checked': bool checked} =>
+         CheckboxBlock(text, checked),
+       _ => throw const FormatException('Unexpected JSON format'),
+     };
+   }
+ }
   
-  class HeaderBlock extends Block {
-    final String text;
-    HeaderBlock(this.text);
-  }
+ class HeaderBlock extends Block {
+   final String text;
+   HeaderBlock(this.text);
+ }
 
-  class ParagraphBlock extends Block {
-    final String text;
-    ParagraphBlock(this.text);
-  }
+ class ParagraphBlock extends Block {
+   final String text;
+   ParagraphBlock(this.text);
+ }
 
-  class CheckboxBlock extends Block {
-    final String text;
-    final bool isChecked;
-    CheckboxBlock(this.text, this.isChecked);
-  }
+ class CheckboxBlock extends Block {
+   final String text;
+   final bool isChecked;
+   CheckboxBlock(this.text, this.isChecked);
+ }
+ ``` 
   
   The sealed keyword is a class modifier that means you can only extend or implement this class in the same library.
   
