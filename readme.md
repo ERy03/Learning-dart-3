@@ -10,30 +10,35 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
  
  ### How to create a record:
  
-'''
+``` dart
    (String, {DateTime modified}) get metadata {
       const title = 'My Document'; 
       final now = DateTime.now();
       return (title, modified: now);
     }
- '''
+ ```
     
  Record fields can contain both named and positonal fields
  
  ### How to access record fields
  
+ ``` dart
     final metadataRecord = document.metadata;
     metadataRecord.$1
     metadataRecord.modified
+   ```
    
    Use getter $<num> on positional fields
    Use the name directly for named fields
    
    ? $<num> starts at $1 and skips named fields
    ex. 
+ 
+ ``` dart
     var record = (named: 'a', 'b', named2: 'c', 'd');
     print(record.$1); // prints b
     print(record.$2); // prints d
+ ```
  
  ### What are patterns?
  
