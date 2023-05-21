@@ -5,10 +5,10 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
 
  Learning points: 
  
- > Why use records? 
+ ### Why use records? 
  You can define a class to return different types of data in a type-safe way but that can be more verbose in some cases
  
- > How to create a record:
+ ### How to create a record:
 
    (String, {DateTime modified}) get metadata {
       const title = 'My Document'; 
@@ -18,7 +18,8 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
     
     Record fields can contain both named and positonal fields
  
- > How to access record fields
+ ### How to access record fields
+ 
     final metadataRecord = document.metadata;
     metadataRecord.$1
     metadataRecord.modified
