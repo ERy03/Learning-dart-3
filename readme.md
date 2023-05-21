@@ -163,16 +163,17 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
   You can provide values directly to a variable.
   Unlike switch statements, switch expressions return a value and can be used anywhere an expression can be used
   
-  ### Guard clauses
-    A guard clause uses the when keyword after a case pattern.
-    They can be used in if-cases, switch statements, and switch expressions.
-    They only add a condition to a pattern after it's matched.
-    If the guard clause evaluates to false, the entire pattern is refuted, and execution proceeds to the next case.
+### Guard clauses
+  
+ A guard clause uses the when keyword after a case pattern.
+ They can be used in if-cases, switch statements, and switch expressions.
+ They only add a condition to a pattern after it's matched.
+ If the guard clause evaluates to false, the entire pattern is refuted, and execution proceeds to the next case.
     
   ### Exhaustive Switching
-    When every case in a switch is handled it's called an exhaustive switch
-    
-    Dart 3 extended exhaustiveness checking to objects and class hierarchies with the new class modifier sealed
+  When every case in a switch is handled it's called an exhaustive switch
+
+  Dart 3 extended exhaustiveness checking to objects and class hierarchies with the new class modifier sealed
     
   ### Sealed 
   Instead of this 
