@@ -31,7 +31,7 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
    Use getter $<num> on positional fields
    Use the name directly for named fields
    
-   ? $<num> starts at $1 and skips named fields
+   ? `$<num>` starts at $1 and skips named fields
    ex. 
  
  ``` dart
