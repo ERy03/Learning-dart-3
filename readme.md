@@ -165,8 +165,8 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
   
 ### Guard clauses
 
->
- A guard clause uses the when keyword after a case pattern.
+
+>A guard clause uses the when keyword after a case pattern.
  They can be used in if-cases, switch statements, and switch expressions.
  They only add a condition to a pattern after it's matched.
  If the guard clause evaluates to false, the entire pattern is refuted, and execution proceeds to the next case.
