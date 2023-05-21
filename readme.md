@@ -16,7 +16,7 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
       return (title, modified: now);
     }
     
-    Record fields can contain both named and positonal fields
+ Record fields can contain both named and positonal fields
  
  ### How to access record fields
  
@@ -33,7 +33,8 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
     print(record.$1); // prints b
     print(record.$2); // prints d
  
- > What are patterns?
+ ### What are patterns?
+ 
  They represent a structure that one or more values can take. They are like blueprints that compare against the actual values to determine if they match. If they match, the record values are binded to a new local variable of the same types and names.
  
   Instead of this
@@ -41,7 +42,7 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
   do this
     final (title, modified: modified) = document.metadata;
  
- > Using patterns
+ ### Using patterns
   final (title, modified: localVariableName) = document.metadata;
   
     Text(title)
@@ -50,7 +51,7 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
   If the name of the field and the variable populating it are the same, you can used a shorthand
     :modified // same as modified: modified
     
- > Types of patterns
+ ### Types of patterns
   - Refutable:
     Used in control flow context
       They expect that some values they compare against will not match
