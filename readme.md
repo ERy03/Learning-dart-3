@@ -45,18 +45,26 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
  They represent a structure that one or more values can take. They are like blueprints that compare against the actual values to determine if they match. If they match, the record values are binded to a new local variable of the same types and names.
  
   Instead of this
+ ``` dart
     final metadataRecord = document.metadata;
+ ``` 
   do this
+ ``` dart
     final (title, modified: modified) = document.metadata;
+ ``` 
  
  ### Using patterns
+ ``` dart
   final (title, modified: localVariableName) = document.metadata;
   
     Text(title)
     'Last modified $localVariableName'
+ ``` 
    
   If the name of the field and the variable populating it are the same, you can used a shorthand
+ ``` dart
     :modified // same as modified: modified
+ ``` 
     
  ### Types of patterns
   - Refutable:
@@ -71,6 +79,7 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
  ### Usesace of Refutable patterns
  Reading JSON values without patterns: 
  
+ ``` dart
   class Document {
     final Map<String, Object?> _json;
     Document() : _json = jsonDecode(documentJson);
@@ -88,9 +97,11 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
       throw const FormatException('Unexpected JSON');          
     }
   }
+ ``` 
   
   With patterns:
   
+ ``` dart
     class Document {
     final Map<String, Object?> _json;
     Document() : _json = jsonDecode(documentJson);
@@ -109,7 +120,8 @@ Created with <3 with [dartpad.dev](https://dartpad.dev).
       }                                                        
     }
   }
-  
+  ``` 
+ 
   This is the new if-case introduced in Dart3.
   The case body only executes if the case pattern matches the data in _json
   
